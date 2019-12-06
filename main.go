@@ -4,7 +4,6 @@ import (
 	"log"
 	"net/http"
 	"github.com/mateogreil/hello-world-42go/config"
-	"github.com/mateogreil/hello-world-42go/models"
 )
 
 func	main() {

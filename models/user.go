@@ -14,12 +14,12 @@ type User 	struct {
 	UpdatedAt	time.Time	`json:"updated_at"`
 }
 
-type Users	[]Car
+type Users	[]User
 
-func FindUserById(id int) *Car {
+func FindUserById(id int) *User {
 	var user User
 
-	row := config.Db().QueryRow("SELECT * FROM users WHERE id = $1;", id)
+	row := config.Db().QueryRow("SELECT users.id, users.login, users.image, users.created_at, users.updated_at FROM users WHERE id = $1;", id)
 	err := row.Scan(&user.Id, &user.Login, &user.Image, &user.CreatedAt, &user.UpdatedAt)
 
 	if err != nil {

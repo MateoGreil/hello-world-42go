@@ -7,6 +7,9 @@ WORKDIR /app
 
 COPY go.mod go.sum ./
 
+
+# RUN go mod init github.com/mateogreil/hello-world-42go
+# RUN go mod tidy
 RUN go mod download
 
 COPY . .
