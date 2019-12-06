@@ -1,7 +1,7 @@
 package	models
 
 import (
-	"config"
+	"github.com/mateogreil/hello-world-42go/config"
 	"log"
 	"time"
 )

@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
-	"models"
+	"github.com/mateogreil/hello-world-42go/models"
 )
 
 func UsersShow(w http.ResponseWriter, r *http.Request) {

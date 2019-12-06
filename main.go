@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 	"net/http"
-	"config"
-	"models"
+	"github.com/mateogreil/hello-world-42go/config"
+	"github.com/mateogreil/hello-world-42go/models"
 )
 
 func	main() {
