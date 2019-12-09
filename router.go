@@ -17,6 +17,7 @@ func InitializeRouter() *mux.Router {
 	router.Methods("GET").Path("/projects/{id}").Name("Show").HandlerFunc(controllers.ProjectsShow)
 	
 	// ProjectsUser
+	router.Methods("GET").Path("/projects_users").Name("Index").HandlerFunc(controllers.ProjectsUsersIndex)
 	router.Methods("GET").Path("/projects_users/{id}").Name("Show").HandlerFunc(controllers.ProjectsUsersShow)
 
 	return router

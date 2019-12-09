@@ -9,7 +9,7 @@ import (
 	"github.com/mateogreil/hello-world-42go/models"
 )
 
-func	ProjectsIndex(w http.ResponseWriter, r *http.Request) {
+func ProjectsIndex(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-type", "application/json;charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
 
@@ -21,7 +21,7 @@ func	ProjectsIndex(w http.ResponseWriter, r *http.Request) {
 		page, err = strconv.Atoi(pageParam[0])
 		if err != nil {
 			log.Fatal(err)
-		}	
+		}
 	}
 
 	projects := models.AllProject(page)
