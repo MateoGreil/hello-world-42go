@@ -9,7 +9,26 @@ import (
 	"github.com/mateogreil/hello-world-42go/models"
 )
 
-func UsersShow(w http.ResponseWriter, r *http.Request) {
+func	UsersIndex(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-type", "application/json;charset=UTF-8")
+	w.WriteHeader(http.StatusOK)
+
+	pageParam, ok := r.URL.Query()["page"]
+
+	var page int
+	if ok {
+		var err error
+		page, err = strconv.Atoi(pageParam[0])
+		if err != nil {
+			log.Fatal(err)
+		}	
+	}
+
+	users := models.AllUser(page)
+	json.NewEncoder(w).Encode(users)
+}
+
+func	UsersShow(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json;charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
 
@@ -21,18 +40,6 @@ func UsersShow(w http.ResponseWriter, r *http.Request) {
 	}
 
 	user := models.FindUserById(id)
-
-	json.NewEncoder(w).Encode(user)
-}
-
-func UsersShowByLogin(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json;charset=UTF-8")
-	w.WriteHeader(http.StatusOK)
-
-	vars := mux.Vars(r)
-	login := vars["login"]
-
-	user := models.FindUserByLogin(login)
 
 	json.NewEncoder(w).Encode(user)
 }
