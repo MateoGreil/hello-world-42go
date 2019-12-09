@@ -24,3 +24,15 @@ func UsersShow(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(user)
 }
+
+func UsersShowByLogin(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json;charset=UTF-8")
+	w.WriteHeader(http.StatusOK)
+
+	vars := mux.Vars(r)
+	login := vars["login"]
+
+	user := models.FindUserByLogin(login)
+
+	json.NewEncoder(w).Encode(user)
+}

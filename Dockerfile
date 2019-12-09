@@ -1,21 +1,11 @@
-FROM golang:1.13.5-alpine3.10
-
-RUN apk update && apk upgrade && \
-    apk add --no-cache bash git openssh
+FROM golang:1.13.5
 
 WORKDIR /app
 
-COPY go.mod go.sum ./
+COPY ./ /app
 
-
-# RUN go mod init github.com/mateogreil/hello-world-42go
-# RUN go mod tidy
 RUN go mod download
 
-COPY . .
+RUN go get github.com/githubnemo/CompileDaemon
 
-RUN go build -o main .
-
-EXPOSE 8080
-
-CMD ["./main"]
+ENTRYPOINT CompileDaemon --build="go build ." --command=./hello-world-42go

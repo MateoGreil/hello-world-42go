@@ -1,17 +1,9 @@
-version: '3'
-
+version: "3"
 services:
-
-  hello_world_42go:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  hello-world-42go:
+    build: ./
     ports:
-      - "8080:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+      - '8080:8080'
+    volumes:
+      - ./:/app
     restart: unless-stopped
-    # volumes:
-    #   - ./:/app
-    entrypoint:
-    - bash
-    - -c
-    - ./main
